@@ -229,3 +229,10 @@ QBCore.Functions.CreateCallback('qb-bossmenu:getplayers', function(source, cb)
 		end)
 	cb(players)
 end)
+
+RegisterNetEvent('qb-bossmenu:server:removeTaxes', function(taxrate, account, govjob)
+    print(GetAccount(account))
+    local amount = GetAccount(account) * taxrate
+    TriggerEvent('qb-bossmenu:server:removeAccountMoney', account, amount)
+    TriggerEvent('qb-bossmenu:server:addAccountMoney', govjob, amount)
+end)
